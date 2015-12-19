@@ -10,21 +10,6 @@ var app = angular.module('filmicApp', [])
       todoList.todoText = '';
     };
  
-    todoList.remaining = function() {
-      var count = 0;
-      angular.forEach(todoList.todos, function(todo) {
-        count += todo.done ? 0 : 1;
-      });
-      return count;
-    };
- 
-    todoList.archive = function() {
-      var oldTodos = todoList.todos;
-      todoList.todos = [];
-      angular.forEach(oldTodos, function(todo) {
-        if (!todo.done) todoList.todos.push(todo);
-      });
-    };
   });
 
 
@@ -51,10 +36,13 @@ app.run(['$rootScope', '$window',  function($rootScope, $window) {
             $rootScope.user = res; // important line
           });
         });
-
-        /* This is also the point where you should create a session for the current user. For this purpose you can use the data inside the res.authResponse object. */
+          
+        // the user object exists in "$rootScope.user"
+        console.log($rootScope.user);
+        console.log(res.authResponse);
+        
       } else {
-        /* The user is not logged to the app, or into Facebook: destroy the session on the server. */
+        console.log("the user isn't logged in");
       }
     });
 
