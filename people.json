@@ -27,19 +27,40 @@
          "Django Unchained (2012)"
       ],
       "songs":[
-      "Uptown Funk",
-      "Cheerleader",
-      "Hello",
-      "Happy",
-      "Thrift Shop",
-      "When I Was Your Man",
-      "Set Fire to the Rain",
-      "Somebody That I Used to Know",
-      "Rolling in the Deep",
-      "Just Dance",
-      "Poker Face",
-      "Roar",
-      "Royals"
+         "Uptown Funk",
+         "Cheerleader",
+         "Hello",
+         "Happy",
+         "Thrift Shop",
+         "When I Was Your Man",
+         "Set Fire to the Rain",
+         "Somebody That I Used to Know",
+         "Rolling in the Deep",
+         "Just Dance",
+         "Poker Face",
+         "Roar",
+         "Royals"
+      ],
+      "books":[
+         "Harry Potter and the Order of the Phoenix",
+         "To Kill a Mockingbird",
+         "The Chronicles of Narnia",
+         "Animal Farm",
+         "The Da Vinci Code",
+         "Lord of the Flies",
+         "Ender's Game",
+         "Charlotte's Web",
+         "Of Mice and Men",
+         "One Hundred Years of Solitude",
+         "The Adventures of Huckleberry Finn",
+         "Green Eggs and Ham",
+         "The Odyssey",
+         "The Outsiders",
+         "The Adventures of Sherlock Holmes",
+         "Matilda",
+         "The Golden Compass",
+         "The Old Man and the Sea",
+         "Winnie-the-Pooh"
       ]
    },
    "friends":{
@@ -161,6 +182,17 @@
             "Timber",
             "Dark Horse",
             "Happy"
+         ],
+         "books":[
+            "Harry Potter and the Order of the Phoenix",
+            "To Kill a Mockingbird",
+            "Pride and Prejudice",
+            "Twilight",
+            "The Chronicles of Narnia",
+            "Gone with the Wind",
+            "Animal Farm",
+            "The Giving Tree",
+            "The Book Thief"
          ]
       },
       "friend2":{
@@ -283,6 +315,18 @@
             "Sexy and I Know It",
             "We Found Love",
             "Set Fire to the Rain"
+         ],
+         "books":[
+            "The Hitchhiker's Guide to the Galaxy",
+            "Wuthering Heights",
+            "The Fault in Our Stars",
+            "J.R.R. Tolkien 4-Book Boxed Set: The Hobbit and The Lord of the Rings",
+            "The Da Vinci Code",
+            "Memoirs of a Geisha",
+            "Alice's Adventures in Wonderland & Through the Looking-Glass",
+            "Romeo and Juliet",
+            "Les Misérables",
+            "The Picture of Dorian Gray"
          ]
       },
       "friend3":{
@@ -404,6 +448,14 @@
             "S&M",
             "Rolling in the Deep",
             "Tik Tok"
+         ],
+         "books":[
+            "Lord of the Flies",
+            "Divergent",
+            "The Time Traveler's Wife",
+            "Ender's Game",
+            "The Alchemist",
+            "Crime and Punishment"
          ]
       },
       "friend4":{
@@ -522,6 +574,17 @@
             "Just Dance",
             "My Life Would Suck Without You",
             "Crack a Bottle"
+         ],
+         "books":[
+            "Fahrenheit 451",
+            "Charlotte's Web",
+            "Anne of Green Gables",
+            "Jane Eyre",
+            "The Help",
+            "Of Mice and Men",
+            "City of Bones",
+            "Dracula",
+            "The Perks of Being a Wallflower"
          ]
       },
       "friend5":{
@@ -634,6 +697,17 @@
             "Boom Boom Pow",
             "I Gotta Feeling",
             "Down"
+         ],
+         "books":[
+            "A Thousand Splendid Suns",
+            "The Secret Garden",
+            "The Lovely Bones",
+            "The Adventures of Huckleberry Finn",
+            "Where the Wild Things Are",
+            "The Great Gatsby",
+            "Green Eggs and Ham",
+            "Water for Elephants",
+            "A Tale of Two Cities"
          ]
       },
       "friend6":{
@@ -749,6 +823,16 @@
             "Teenage Dream",
             "Just the Way You Are",
             "Like a G6"
+         ],
+         "books":[
+            "The Pillars of the Earth",
+            "Dune",
+            "Watership Down",
+            "The Stand",
+            "Frankenstein",
+            "My Sister's Keeper",
+            "Great Expectations",
+            "The Adventures of Sherlock Holmes"
          ]
       },
       "friend7":{
@@ -869,6 +953,17 @@
             "Someone Like You",
             "Whistle",
             "We Are Never Ever Getting Back Together"
+         ],
+         "books":[
+            "The Road",
+            "The Color Purple",
+            "Anna Karenina",
+            "Outlander",
+            "The Giver",
+            "A Clockwork Orange",
+            "The Poisonwood Bible",
+            "The Brothers Karamazov",
+            "The Girl with the Dragon Tattoo"
          ]
       },
       "friend8":{
@@ -981,6 +1076,13 @@
             "Last Friday Night (T.G.I.F.)",
             "Moves Like Jagger",
             "Someone Like You"
+         ],
+         "books":[
+            "The Bell Jar",
+            "A Tree Grows in Brooklyn",
+            "The Handmaid's Tale",
+            "Angela's Ashes",
+            "The Kite Runner"
          ]
       },
       "friend9":{
@@ -1098,6 +1200,15 @@
             "Roar",
             "Wrecking Ball",
             "Royals"
+         ],
+         "books":[
+            "The Fellowship of the Ring",
+            "The Notebook",
+            "A Prayer for Owen Meany",
+            "The Golden Compass",
+            "Moby-Dick; or, The Whale",
+            "The Old Man and the Sea",
+            "The Complete Stories and Poems"
          ]
       },
       "friend10":{
@@ -1214,6 +1325,14 @@
             "We Are Never Ever Getting Back Together",
             "One More Night",
             "Diamonds"
+         ],
+         "books":[
+            "The Lightning Thief",
+            "One Flew Over the Cuckoo's Nest",
+            "Rebecca",
+            "Vampire Academy",
+            "Atlas Shrugged",
+            "Little Women"
          ]
       },
       "friend11":{
@@ -1328,6 +1447,16 @@
             "Party Rock Anthem",
             "Last Friday Night (T.G.I.F.)",
             "Moves Like Jagger"
+         ],
+         "books":[
+            "Catch-22",
+            "A Game of Thrones",
+            "Siddhartha",
+            "Matilda",
+            "Don Quixote",
+            "The Red Tent",
+            "Interview with the Vampire",
+            "The Secret Life of Bees"
          ]
       },
       "friend12":{
@@ -1449,6 +1578,15 @@
             "Roar",
             "Wrecking Ball",
             "Royals"
+         ],
+         "books":[
+            "The Catcher in the Rye",
+            "The Odyssey",
+            "Lolita",
+            "The Outsiders",
+            "Slaughterhouse-Five",
+            "The Little Prince",
+            "Winnie-the-Pooh"
          ]
       },
       "friend13":{
@@ -1646,6 +1784,14 @@
             "Timber",
             "Dark Horse",
             "Happy"
+         ],
+         "books":[
+            "The Princess Bride",
+            "Brave New World",
+            "One Hundred Years of Solitude",
+            "A Wrinkle in Time",
+            "Life of Pi",
+            "Middlesex"
          ]
       }
    }

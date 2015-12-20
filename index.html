@@ -9,15 +9,24 @@
   <body ng-controller='filmicController'>
     <h2>filmic</h2>
     
-    <button ng-click='sayHello()'>greet</button>
+    <button ng-click='sayHello()'>welcome</button>
     <br>
     {{greeting}}
     
-    <hr>
+    <br><br>
     
-    <button ng-click='listInfo()'>list movies</button>
+    <button ng-click='listInfo()'>list personal favorites</button>
     <br>
     <textarea ng-model='movieList'></textarea>
+    <textarea ng-model='songList'></textarea>
+    <textarea ng-model='bookList'></textarea>
+
+    <br><br>
+
+    <button ng-click='getNeighbors()'>get neighbors</button>
+    <br>
+    <textarea ng-model='neighbors'></textarea>
+
 
   </body>
 </html>
