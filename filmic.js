@@ -88,18 +88,19 @@ var sharedLikes = function(me, friend, medium) {
 //      1: reviews
 //      2: trustworthiness
 //      3: filmBuffFactor
-//  returns: top 10 recommended movies
 var getRecs = function(neighbors, friends, hipster, weights) {
   var recs = [];
 
   // get all movies liked by neighbors
-  for (var i in neighbors) {
-    recs.concat(friends[neighbors[i][0]].movies);
+  for (var k in neighbors) {
+    recs = recs.concat(friends[neighbors[k][0]].movies);
   }
 
+  recs = removeDuplicates(recs);
+
   // get scores
-  for (i in recs) {
-    var movie = recs[j];
+  for (var i in recs) {
+    var movie = recs[i];
     var popularity = Math.log(globalLikes(movie));
     var reviews = tomatometer(movie);
     var trustworthiness = 0;
@@ -107,10 +108,12 @@ var getRecs = function(neighbors, friends, hipster, weights) {
 
     for (var j in neighbors) {
       var neighbor = neighbors[j][0];
-      var closeness = neighbors[j][1];
+      if (friends[neighbor].movies.indexOf(movie) > -1) {
+        var closeness = neighbors[j][1];
 
-      trustworthiness += closeness;
-      filmBuffFactor += friends[neighbors[j][0]].movies.length;
+        trustworthiness += closeness;
+        filmBuffFactor += friends[neighbor].movies.length;
+      }
     }
 
     if (hipster) {
@@ -122,7 +125,7 @@ var getRecs = function(neighbors, friends, hipster, weights) {
     trustworthiness *= weights[2];
     filmBuffFactor *= weights[3];
     
-    recs[j] = [recs[j], popularity, reviews, trustworthiness, filmBuffFactor];
+    recs[i] = [movie, popularity, reviews, trustworthiness, filmBuffFactor];
   }
 
   // sort by sum of scores, descending
@@ -146,4 +149,10 @@ var getRecs = function(neighbors, friends, hipster, weights) {
   }
 
   return recs;
+};
+
+var removeDuplicates = function(x) {
+  return x.sort().filter(function(item, pos, ary) {
+    return !pos || item != ary[pos - 1];
+  });
 };
