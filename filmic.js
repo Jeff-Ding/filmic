@@ -9,22 +9,24 @@ app.controller('filmicController', function($scope, $rootScope) {
   $scope.listInfo = function() {
     FB.api('/me/movies', function (response) {
       $scope.movieList = response;
+      console.log(response);
     });
 
     FB.api('/me/music', function (response) {
       $scope.musicList = response;
+      console.log(response);
     });
 
-    FB.api('/'+100002194731471+'/books', function (response) {
+    FB.api('/me/books', function (response) {
       $scope.bookList = response;
+      console.log(response);
     });
 
     FB.api('/me/friends', function (response) {
       $scope.friendList = response;
-
-      console.log('this is the scope');
-      console.log($scope);
+      console.log(response);
     });
+
   }
 
 });
