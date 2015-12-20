@@ -2,13 +2,23 @@ var app = angular.module('filmicApp', []);
 
 app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.people = {};
+  $scope.globalLikes = {};
+  $scope.tomatometer = {};
   $http.get('./people.json').success(function(data) {
     $scope.people = data;
   });
+  $http.get('./globalLikes.json').success(function(data) {
+    $scope.globalLikes = data;
+  });
+  $http.get('./tomatometer.json').success(function(data) {
+    $scope.tomatometer = data;
+  });
 
+  
   $scope.sayHello = function() {
       $scope.greeting = 'hello ' + $scope.people.person1.name;
   }
+
 
   $scope.listInfo = function() {
     $scope.movieList = JSON.stringify($scope.people.person1.movies, null, 4);
@@ -18,7 +28,14 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
 
   $scope.getNeighbors = function() {
     $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, true, .8);
+    $scope.neighborList = JSON.stringify($scope.neighbors, null, 4);
   };
+
+  $scope.getRecs = function() {
+    var result = getRecs($scope.neighbors, $scope.people.friends, false, [1,2,3,4], $scope.globalLikes, $scope.tomatometer);
+    $scope.recs = JSON.stringify(result, null, 4);
+  };
+
 
 });
 
@@ -92,21 +109,22 @@ var sharedLikes = function(me, friend, medium) {
 //      1: reviews
 //      2: trustworthiness
 //      3: filmBuffFactor
-var getRecs = function(neighbors, friends, hipster, weights) {
+//  globalLikes: hashtable
+//  tomatometer: hashtable
+var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomatometer) {
   var recs = [];
 
   // get all movies liked by neighbors
-  for (var i in neighbors) {
+  for (var i in neighbors)
     recs = recs.concat(friends[neighbors[i][0]].movies);
-  }
 
   recs = removeDuplicates(recs);
 
   // get scores
   for (i in recs) {
     var movie = recs[i];
-    var popularity = Math.log(globalLikes(movie));
-    var reviews = tomatometer(movie);
+    var popularity = Math.log(globalLikes[movie]);
+    var reviews = tomatometer[movie];
     var trustworthiness = 0;
     var filmBuffFactor = 0;
 
@@ -120,9 +138,8 @@ var getRecs = function(neighbors, friends, hipster, weights) {
       }
     }
 
-    if (hipster) {
+    if (hipster)
       weights[0] *= -1;
-    }
 
     popularity *= weights[0];
     reviews *= weights[1];
@@ -148,9 +165,8 @@ var getRecs = function(neighbors, friends, hipster, weights) {
   recs = recs.slice(0,10);
 
   // only want movie ids
-  for (i in recs) {
+  for (i in recs)
     recs[i] = recs[i][0];
-  }
 
   return recs;
 };
