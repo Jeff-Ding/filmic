@@ -29,6 +29,7 @@ app.run(function($rootScope, $window) {
         FB.api('/me', function(response) {
           $rootScope.$apply(function() {
             $rootScope.user = response;   // user is stored in $rootScope.user
+            console.log(response);
           });
         });
       } else {
