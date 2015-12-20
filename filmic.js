@@ -95,9 +95,10 @@ app.run(function($rootScope, $window) {
 var getNeighbors = function(me, friends, enhanced, threshold) {
   var neighbors = [];
   var length = 0;
+  var ids = friends.keys();
 
-  for (var id in friends.keys()) {
-    var friend = friends.id;
+  for (var i in ids) {
+    var friend = friends.ids[i];
     var closeness = sharedLikes(me, friend, movies);
 
     if (enhanced) {
@@ -112,8 +113,8 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
   neighbors.sort(function(a, b) {
     return a[1] - b[1];
   });
-  var cutoff = Math.ceil(length*threshold);
 
+  var cutoff = Math.ceil(length*threshold);
   return neighbors.slice(cutoff, length+1);
 };
 
@@ -122,12 +123,16 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
 // for specific medium (movies, songs, or books)
 var sharedLikes = function(me, friend, medium) {
   var shared = 0;
-  for (var myTitle in me.medium) {
-    for (var friendTitle in friend.medium) {
-      if (myTitle === friendTitle) {
+  var myTitles = me.medium;
+  var friendTitles = friend.medium;
+
+  for (var i in myTitles) {
+    for (var j in friendTitles) {
+      if (myTitles[i] === friendTitles[j]) {
         shared++;
       }
     }
   }
+  
   return shared;
 };
