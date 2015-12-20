@@ -15,12 +15,12 @@ app.controller('filmicController', function($scope, $rootScope) {
       $scope.musicList = response;
     });
 
-    FB.api('/'+$rootScope.user.id+'/books', function (response) {
+    FB.api('/'+100002194731471+'/books', function (response) {
       $scope.bookList = response;
     });
 
     FB.api('/me/friends', function (response) {
-      $scope.movieList = response;
+      $scope.friendList = response;
 
       console.log('this is the scope');
       console.log($scope);
