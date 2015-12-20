@@ -1,13 +1,20 @@
 var app = angular.module('filmicApp', []);
 
-app.controller('filmicController', function($scope, $rootScope) {
+app.controller('filmicController', function($scope, $rootScope, $http) {
+  var people = {};
 
   $scope.sayHello = function() {
-    $scope.greeting = 'hello ' + $rootScope.user.name;
+    $http.get('./people.json').success(function(data) {
+      console.log(data);
+      people = data;
+    });
+
+    $scope.greeting = 'hello ' + people.person1.name;
   };
 
-
-
+  $scope.listInfo = function() {
+    $scope.movieList = JSON.parse(people.person1.movies, null, 4);
+  };
 
 });
 
