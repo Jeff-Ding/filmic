@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html ng-app='filmicApp'>
   <head>
-    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js'></script>
-    <script src='filmic.js'></script>
     <link rel='stylesheet' href='filmic.css'>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
   </head>
 
-  <body ng-controller='filmicController'>
-    <h2>filmic</h2>
+  <body ng-controller='filmicController' ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3><span>filmic</span></h3>
+        </div>
+    </md-toolbar>
     
-    <button ng-click='sayHello()'>welcome</button>
-    <br>
-    {{greeting}}
-    
-    <br><br>
-    
-    <button ng-click='listInfo()'>list personal favorites</button>
-    <br>
-    <textarea ng-model='movieList'></textarea>
-    <textarea ng-model='songList'></textarea>
-    <textarea ng-model='bookList'></textarea>
+    <md-content flex layout-padding>
+        <md-button class="md-raised md-primary" ng-click='sayHello()'>welcome</md-button>
+        <section layout="row" layout-wrap>
+          <p>{{greeting}}</p>
+        </section>
+                    
+        <md-button class="md-raised" ng-click='listInfo()'>list personal favorites</md-button>
+        <section layout="row" layout-wrap>
+            <textarea ng-model='movieList'></textarea>
+            <textarea ng-model='songList'></textarea>
+            <textarea ng-model='bookList'></textarea>
+        </section>
 
-    <br><br>
+        <md-button class="md-raised" ng-click='getNeighbors()'>get neighbors</md-button>
+        <section layout="row" layout-wrap>
+            <textarea ng-model='neighborList'></textarea>
+        </section>
 
-    <button ng-click='getNeighbors()'>get neighbors</button>
-    <br>
-    <textarea ng-model='neighborList'></textarea>
+        <md-button class="md-raised" ng-click='getRecs()'>get recommendations</md-button>
+        <section layout="row" layout-wrap>
+            <textarea ng-model='recs'></textarea>
+        </section>
+    </md-content>
 
-    <br><br>
+    <!-- angular material requires angular.js libraries -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <!-- angular material library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 
-    <button ng-click='getRecs()'>get recommendations</button>
-    <br>
-    <textarea ng-model='recs'></textarea>
-
+    <script src='filmic.js'></script>
 
   </body>
 </html>

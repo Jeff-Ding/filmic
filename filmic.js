@@ -1,4 +1,4 @@
-var app = angular.module('filmicApp', []);
+var app = angular.module('filmicApp', ['ngMaterial']);
 
 app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.people = {};
@@ -14,8 +14,9 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
     $scope.tomatometer = data;
   });
 
-  
+ 
   $scope.sayHello = function() {
+      // $scope.greeting = 'hello'
       $scope.greeting = 'hello ' + $scope.people.person1.name;
   }
 
