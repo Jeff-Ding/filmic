@@ -6,74 +6,10 @@ app.controller('filmicController', function($scope, $rootScope) {
     $scope.greeting = 'hello ' + $rootScope.user.name;
   };
 
-  $scope.listInfo = function() {
-    FB.api('/me/movies', function (response) {
-      $scope.movieList = response;
-      console.log(response);
-    });
 
-    FB.api('/me/music', function (response) {
-      $scope.musicList = response;
-      console.log(response);
-    });
 
-    FB.api('/me/books', function (response) {
-      $scope.bookList = response;
-      console.log(response);
-    });
-
-    FB.api('/me/friends', function (response) {
-      $scope.friendList = response;
-      console.log(response);
-    });
-
-  }
 
 });
-
-
-// runs at the beginning
-app.run(function($rootScope, $window) {
-
-  $rootScope.user = {};
-
-  // execute when the sdk is loaded
-  $window.fbAsyncInit = function() {
-    FB.init({
-      appId: '498650293637737',
-      status: true,
-      cookie: true,
-      xfbml: true
-    });
-
-    // watch login change
-    FB.Event.subscribe('auth.authResponseChange', function(response) {
-      if (response.status === 'connected') {
-        FB.api('/me', function(response) {
-          $rootScope.$apply(function() {
-            $rootScope.user = response;   // user is stored in $rootScope.user
-            console.log(response);
-          });
-        });
-      } else {
-        console.log("the user isn't logged in");
-      }
-    });
-  };
-
-  // load the facebook sdk
-  (function(d){
-    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) { return; }
-    js = d.createElement('script');
-    js.id = id;
-    js.async = true;
-    js.src = "https://connect.facebook.net/en_US/all.js";
-    ref.parentNode.insertBefore(js, ref);
-  }(document));
-
-});
-
 
 
 
