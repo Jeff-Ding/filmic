@@ -7,9 +7,9 @@ app.controller('filmicController', function($scope, $rootScope) {
   };
 
   $scope.listMovies = function() {
-    FB.api('/' + $rootScope.user.id + '/movies', function (response) {
-      $scope.movieList = response;
+    FB.api('/me/movies', function (response) {
       console.log(response);
+      $scope.movieList = response;
     });
   }
 
