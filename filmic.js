@@ -6,10 +6,24 @@ app.controller('filmicController', function($scope, $rootScope) {
     $scope.greeting = 'hello ' + $rootScope.user.name;
   };
 
-  $scope.listMovies = function() {
+  $scope.listInfo = function() {
     FB.api('/me/movies', function (response) {
-      console.log(response);
       $scope.movieList = response;
+    });
+
+    FB.api('/me/music', function (response) {
+      $scope.musicList = response;
+    });
+
+    FB.api('/'+$rootScope.user.id+'/books', function (response) {
+      $scope.bookList = response;
+    });
+
+    FB.api('/me/friends', function (response) {
+      $scope.movieList = response;
+
+      console.log('this is the scope');
+      console.log($scope);
     });
   }
 
