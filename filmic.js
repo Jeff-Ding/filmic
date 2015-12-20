@@ -1,10 +1,18 @@
 var app = angular.module('filmicApp', []);
 
-app.controller('FilmicController', function($scope, $rootScope) {
+app.controller('filmicController', function($scope, $rootScope) {
 
   $scope.sayHello = function() {
     $scope.greeting = 'hello ' + $rootScope.user.name;
   };
+
+  $scope.logout = function() {
+    FB.logout(function(response) {
+      $rootScope.$apply(function() {
+        $rootScope.user = {};
+      });
+    });
+  }
 
 });
 
@@ -13,7 +21,7 @@ app.controller('FilmicController', function($scope, $rootScope) {
 app.run(function($rootScope, $window) {
 
   $rootScope.user = {};
-  
+
   // execute when the sdk is loaded
   $window.fbAsyncInit = function() {
     FB.init({
@@ -24,11 +32,11 @@ app.run(function($rootScope, $window) {
     });
 
     // watch login change
-    FB.Event.subscribe('auth.authResponseChange', function(result) {
-      if (result.status === 'connected') {
-        FB.api('/me', function(result) {
-          $rootScope.$apply(function() { 
-            $rootScope.user = result;   // user is stored in $rootScope.user
+    FB.Event.subscribe('auth.authResponseChange', function(response) {
+      if (response.status === 'connected') {
+        FB.api('/me', function(response) {
+          $rootScope.$apply(function() {
+            $rootScope.user = response;   // user is stored in $rootScope.user
           });
         });
       } else {
@@ -71,25 +79,25 @@ app.run(function($rootScope, $window) {
 var getNeighbors = function(me, friends, enhanced, threshold) {
   var neighbors = [];
   var length = 0;
-  
+
   for (var id in friends.keys()) {
     var friend = friends.id;
     var closeness = sharedLikes(me, friend, movies);
-    
+
     if (enhanced) {
       closeness += sharedLikes(me, friend, songs);
       closeness += sharedLikes(me, friend, books);
     }
-    
+
     neighbors.push([id, closeness]);
     length++;
   }
-  
+
   neighbors.sort(function(a, b) {
     return a[1] - b[1];
   });
   var cutoff = Math.ceil(length*threshold);
-  
+
   return neighbors.slice(cutoff, length+1);
 };
 
