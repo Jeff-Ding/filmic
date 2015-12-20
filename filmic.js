@@ -92,14 +92,14 @@ var getRecs = function(neighbors, friends, hipster, weights) {
   var recs = [];
 
   // get all movies liked by neighbors
-  for (var k in neighbors) {
-    recs = recs.concat(friends[neighbors[k][0]].movies);
+  for (var i in neighbors) {
+    recs = recs.concat(friends[neighbors[i][0]].movies);
   }
 
   recs = removeDuplicates(recs);
 
   // get scores
-  for (var i in recs) {
+  for (i in recs) {
     var movie = recs[i];
     var popularity = Math.log(globalLikes(movie));
     var reviews = tomatometer(movie);
