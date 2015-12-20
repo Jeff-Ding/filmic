@@ -3,20 +3,19 @@ var app = angular.module('filmicApp', []);
 app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.people = x;
 
-  // $scope.sayHello = function() {
-  //   $http.get('./people.json').success(function(data) {
-  //     console.log(data);
-  //     $scope.people = data;
-  //     $scope.greeting = 'hello ' + $scope.people.person1.name;
-  //   });
-
   $scope.sayHello = function() {
-    $scope.people = data;
-    $scope.greeting = 'hello ' + $scope.people.person1.name;
+    // $http.get('./people.json').success(function(data) {
+      // $scope.people = data;
+      $scope.greeting = 'hello ' + $scope.people.person1.name;
+    // });
   }
 
   $scope.listInfo = function() {
-    $scope.movieList = JSON.parse($scope.people.person1.movies, null, 4);
+    console.log($scope.people.person1.movies);
+    $scope.movieList = JSON.stringify($scope.people.person1.movies, null, 4);
+    
+    var result = getNeighbors($scope.people.person1, $scope.people.friends, false, .8)
+    console.log(result);
   };
 
 });
@@ -182,8 +181,8 @@ var x = {
          "Django Unchained (2012)"
       ]
    },
-   "friends":[
-      {
+   "friends":{
+      "friend1":{
          "name":"Clark Kent",
          "movies":[
             "Inside Out (2015)",
@@ -288,7 +287,7 @@ var x = {
             "Charlotte's Web (2006)"
          ]
       },
-      {
+      "friend2":{
          "name":"Peter Parker",
          "movies":[
             "Mad Max: Fury Road (2015)",
@@ -393,7 +392,7 @@ var x = {
             "Fantastic Mr. Fox (2009)"
          ]
       },
-      {
+      "friend3":{
          "name":"Tony Stark",
          "movies":[
             "Das Cabinet des Dr. Caligari. (The Cabinet of Dr. Caligari) (1920)",
@@ -498,7 +497,7 @@ var x = {
             "Yi Yi (2000)"
          ]
       },
-      {
+      "friend4":{
          "name":"Bruce Banner",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -603,7 +602,7 @@ var x = {
             "Enter the Dragon (1973)"
          ]
       },
-      {
+      "friend5":{
          "name":"Steve Rogers",
          "movies":[
             "All About Eve (1950)",
@@ -708,7 +707,7 @@ var x = {
             "Shakespeare in Love (1998)"
          ]
       },
-      {
+      "friend6":{
          "name":"Selina Kyle",
          "movies":[
             "Man on Wire (2008)",
@@ -813,7 +812,7 @@ var x = {
             "Sicko (2007)"
          ]
       },
-      {
+      "friend7":{
          "name":"Natalia Romanov",
          "movies":[
             "Citizen Kane (1941)",
@@ -917,7 +916,7 @@ var x = {
             "Wadjda (2013)"
          ]
       },
-      {
+      "friend8":{
          "name":"Jean Grey",
          "movies":[
             "Das Cabinet des Dr. Caligari. (The Cabinet of Dr. Caligari) (1920)",
@@ -1021,7 +1020,7 @@ var x = {
             "Brick (2006)"
          ]
       },
-      {
+      "friend9":{
          "name":"Carol Danvers",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -1126,7 +1125,7 @@ var x = {
             "Akeelah and the Bee (2006)"
          ]
       },
-      {
+      "friend10":{
          "name":"Kate Kane",
          "movies":[
             "The Third Man (1949)",
@@ -1230,7 +1229,7 @@ var x = {
             "Blue Velvet (1986)"
          ]
       },
-      {
+      "friend11":{
          "name":"Buffy Summers",
          "movies":[
             "Casablanca (1942)",
@@ -1334,7 +1333,7 @@ var x = {
             "Venus (2006)"
          ]
       },
-      {
+      "friend12":{
          "name":"Harley Quinn",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -1437,7 +1436,7 @@ var x = {
             "The Little Mermaid (1989)"
          ]
       },
-      {
+      "friend13":{
          "name":"Diana Prince",
          "movies":[
             "The Bride of Frankenstein (1935)",
@@ -1621,5 +1620,5 @@ var x = {
             "The Claim (2000)"
          ]
       }
-   ]
+   }
 }

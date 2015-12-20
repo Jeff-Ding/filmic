@@ -25,10 +25,25 @@
          "The Iron Giant (1999)",
          "The Princess Bride (1987)",
          "Django Unchained (2012)"
+      ],
+      "songs":[
+      "Uptown Funk",
+      "Cheerleader",
+      "Hello",
+      "Happy",
+      "Thrift Shop",
+      "When I Was Your Man",
+      "Set Fire to the Rain",
+      "Somebody That I Used to Know",
+      "Rolling in the Deep",
+      "Just Dance",
+      "Poker Face",
+      "Roar",
+      "Royals"
       ]
    },
-   "friends":[
-      {
+   "friends":{
+      "friend1":{
          "name":"Clark Kent",
          "movies":[
             "Inside Out (2015)",
@@ -131,9 +146,24 @@
             "Madagascar 3: Europe's Most Wanted (2012)",
             "Mr. Peabody & Sherman (2014)",
             "Charlotte's Web (2006)"
+         ],
+         "songs":[
+            "Uptown Funk",
+            "Blank Space",
+            "See You Again",
+            "Bad Blood",
+            "Cheerleader",
+            "Can't Feel My Face",
+            "What Do You Mean?",
+            "The Hills",
+            "Hello",
+            "The Monster",
+            "Timber",
+            "Dark Horse",
+            "Happy"
          ]
       },
-      {
+      "friend2":{
          "name":"Peter Parker",
          "movies":[
             "Mad Max: Fury Road (2015)",
@@ -236,9 +266,26 @@
             "Blindsight (2006)",
             "Drive (2011)",
             "Fantastic Mr. Fox (2009)"
+         ],
+         "songs":[
+            "All of Me",
+            "Fancy",
+            "Rude",
+            "Shake It Off",
+            "All About That Bass",
+            "Locked Out of Heaven",
+            "Thrift Shop",
+            "Harlem Shake",
+            "When I Was Your Man",
+            "Just Give Me a Reason",
+            "Can't Hold Us",
+            "Blurred Lines",
+            "Sexy and I Know It",
+            "We Found Love",
+            "Set Fire to the Rain"
          ]
       },
-      {
+      "friend3":{
          "name":"Tony Stark",
          "movies":[
             "Das Cabinet des Dr. Caligari. (The Cabinet of Dr. Caligari) (1920)",
@@ -341,9 +388,25 @@
             "Happy-Go-Lucky (2008)",
             "Ajami (2010)",
             "Yi Yi (2000)"
+         ],
+         "songs":[
+            "Stronger (What Doesn't Kill You)",
+            "Part of Me",
+            "We Are Young",
+            "Somebody That I Used to Know",
+            "Call Me Maybe",
+            "Firework",
+            "Grenade",
+            "Hold It Against Me",
+            "Black and Yellow",
+            "Born This Way",
+            "E.T.",
+            "S&M",
+            "Rolling in the Deep",
+            "Tik Tok"
          ]
       },
-      {
+      "friend4":{
          "name":"Bruce Banner",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -446,9 +509,22 @@
             "Ran (1985)",
             "Deliverance (1972)",
             "Enter the Dragon (1973)"
+         ],
+         "songs":[
+            "Imma Be",
+            "Break Your Heart",
+            "Rude Boy",
+            "Nothin' on You",
+            "OMG",
+            "Not Afraid",
+            "California Gurls",
+            "Single Ladies (Put a Ring on It)",
+            "Just Dance",
+            "My Life Would Suck Without You",
+            "Crack a Bottle"
          ]
       },
-      {
+      "friend5":{
          "name":"Steve Rogers",
          "movies":[
             "All About Eve (1950)",
@@ -551,9 +627,16 @@
             "Ten Canoes (2007)",
             "Wild Tales (2015)",
             "Shakespeare in Love (1998)"
+         ],
+         "songs":[
+            "Right Round",
+            "Poker Face",
+            "Boom Boom Pow",
+            "I Gotta Feeling",
+            "Down"
          ]
       },
-      {
+      "friend6":{
          "name":"Selina Kyle",
          "movies":[
             "Man on Wire (2008)",
@@ -656,9 +739,19 @@
             "Chasing Ice (2012)",
             "Searching for Sugar Man (2012)",
             "Sicko (2007)"
+         ],
+         "songs":[
+            "3",
+            "Fireflies",
+            "Whatcha Say",
+            "Empire State of Mind",
+            "Love the Way You Lie",
+            "Teenage Dream",
+            "Just the Way You Are",
+            "Like a G6"
          ]
       },
-      {
+      "friend7":{
          "name":"Natalia Romanov",
          "movies":[
             "Citizen Kane (1941)",
@@ -760,9 +853,25 @@
             "Before Sunrise (1995)",
             "Three Colors: Blue (Trois Couleurs: Bleu) (1993)",
             "Wadjda (2013)"
+         ],
+         "songs":[
+            "3",
+            "Fireflies",
+            "Whatcha Say",
+            "Empire State of Mind",
+            "Love the Way You Lie",
+            "Teenage Dream",
+            "Just the Way You Are",
+            "Like a G6",
+            "Party Rock Anthem",
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger",
+            "Someone Like You",
+            "Whistle",
+            "We Are Never Ever Getting Back Together"
          ]
       },
-      {
+      "friend8":{
          "name":"Jean Grey",
          "movies":[
             "Das Cabinet des Dr. Caligari. (The Cabinet of Dr. Caligari) (1920)",
@@ -864,9 +973,17 @@
             "Goodnight Mommy (2015)",
             "The Thing (1982)",
             "Brick (2006)"
+         ],
+         "songs":[
+            "Raise Your Glass",
+            "Give Me Everything",
+            "Party Rock Anthem",
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger",
+            "Someone Like You"
          ]
       },
-      {
+      "friend9":{
          "name":"Carol Danvers",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -969,9 +1086,21 @@
             "The Parent Trap (1998)",
             "Fly Away Home (1996)",
             "Akeelah and the Bee (2006)"
+         ],
+         "songs":[
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger",
+            "Someone Like You",
+            "Whistle",
+            "We Are Never Ever Getting Back Together",
+            "One More Night",
+            "Diamonds",
+            "Roar",
+            "Wrecking Ball",
+            "Royals"
          ]
       },
-      {
+      "friend10":{
          "name":"Kate Kane",
          "movies":[
             "The Third Man (1949)",
@@ -1073,9 +1202,21 @@
             "A Hijacking (2013)",
             "A Girl Walks Home Alone at Night (2014)",
             "Blue Velvet (1986)"
+         ],
+         "songs":[
+            "Raise Your Glass",
+            "Give Me Everything",
+            "Party Rock Anthem",
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger",
+            "Someone Like You",
+            "Whistle",
+            "We Are Never Ever Getting Back Together",
+            "One More Night",
+            "Diamonds"
          ]
       },
-      {
+      "friend11":{
          "name":"Buffy Summers",
          "movies":[
             "Casablanca (1942)",
@@ -1177,9 +1318,19 @@
             "Whale Rider (2003)",
             "Much Ado About Nothing (1993)",
             "Venus (2006)"
+         ],
+         "songs":[
+            "We R Who We R",
+            "What's My Name?",
+            "Only Girl (In the World)",
+            "Raise Your Glass",
+            "Give Me Everything",
+            "Party Rock Anthem",
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger"
          ]
       },
-      {
+      "friend12":{
          "name":"Harley Quinn",
          "movies":[
             "The Wizard of Oz (1939)",
@@ -1280,9 +1431,27 @@
             "Shaun of the Dead (2004)",
             "Men in Black (1997)",
             "The Little Mermaid (1989)"
+         ],
+         "songs":[
+            "We R Who We R",
+            "What's My Name?",
+            "Only Girl (In the World)",
+            "Raise Your Glass",
+            "Give Me Everything",
+            "Party Rock Anthem",
+            "Last Friday Night (T.G.I.F.)",
+            "Moves Like Jagger",
+            "Someone Like You",
+            "Whistle",
+            "We Are Never Ever Getting Back Together",
+            "One More Night",
+            "Diamonds",
+            "Roar",
+            "Wrecking Ball",
+            "Royals"
          ]
       },
-      {
+      "friend13":{
          "name":"Diana Prince",
          "movies":[
             "The Bride of Frankenstein (1935)",
@@ -1464,7 +1633,20 @@
             "Maverick (1994)",
             "The Keeping Room (2015)",
             "The Claim (2000)"
+         ],
+         "songs":[
+            "See You Again",
+            "Bad Blood",
+            "Cheerleader",
+            "Can't Feel My Face",
+            "What Do You Mean?",
+            "The Hills",
+            "Hello",
+            "The Monster",
+            "Timber",
+            "Dark Horse",
+            "Happy"
          ]
       }
-   ]
+   }
 }
