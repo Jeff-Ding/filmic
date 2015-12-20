@@ -14,7 +14,6 @@
         {{greeting}}
     </div>
 
-    <fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>
-    <button ng-click='logout()'>log out</button>
+    <fb:login-button size="large" scope="" auto-logout-link="true" scope="user_likes, user_actions.books, user_actions.music, user_actions.video"></fb:login-button>
   </body>
 </html>

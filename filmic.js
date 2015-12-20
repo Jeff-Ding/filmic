@@ -6,14 +6,6 @@ app.controller('filmicController', function($scope, $rootScope) {
     $scope.greeting = 'hello ' + $rootScope.user.name;
   };
 
-  $scope.logout = function() {
-    FB.logout(function(response) {
-      $rootScope.$apply(function() {
-        $rootScope.user = {};
-      });
-    });
-  }
-
 });
 
 
