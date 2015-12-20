@@ -10,8 +10,11 @@
     <h2>filmic</h2>
     
     <div ng-controller="FilmicController">
-      {{test}}
-      {{username}}
+        {{test}}
+        <hr>
+        <button ng-click='sayHello()'>greet</button>
+        <hr>
+        {{greeting}}
     </div>
 
     <fb:login-button show-faces="true" max-rows="1" size="large"></fb:login-button>

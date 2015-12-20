@@ -1,14 +1,18 @@
 var app = angular.module('filmicApp', []);
 
-app.controller('FilmicController', function($scope) {
-  $scope.test = "testtt"
+app.controller('FilmicController', function($scope, $rootScope) {
+
+  $scope.sayHello = function() {
+    $scope.greeting = 'hello ' + $rootScope.user.name;
+  };
+
 });
 
 
 // runs at the beginning
-app.run(function($scope, $window) {
+app.run(function($rootScope, $window) {
 
-  $scope.user = {};
+  $rootScope.user = {};
   
   // execute when the sdk is loaded
   $window.fbAsyncInit = function() {
@@ -20,12 +24,11 @@ app.run(function($scope, $window) {
     });
 
     // watch login change
-    FB.Event.subscribe('auth.authResponseChange', function(res) {
-      if (res.status === 'connected') {
-        // get the user, and store in "$scope.user"
-        FB.api('/me', function(res) {
-          $scope.$apply(function() { 
-            $scope.user = res; // important line
+    FB.Event.subscribe('auth.authResponseChange', function(result) {
+      if (result.status === 'connected') {
+        FB.api('/me', function(result) {
+          $rootScope.$apply(function() { 
+            $rootScope.user = result;   // user is stored in $rootScope.user
           });
         });
       } else {
@@ -34,7 +37,6 @@ app.run(function($scope, $window) {
     });
   };
 
-  // immediately invoked function
   // load the facebook sdk
   (function(d){
     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
