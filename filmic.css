@@ -12,3 +12,8 @@ section {
   border-radius: 3px;
   margin: 1em;
 }
+
+input[type="number"] {
+  text-align: center;
+  padding-left: 10px;
+}

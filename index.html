@@ -25,7 +25,7 @@
 
         <md-button class="md-raised" ng-click='getNeighbors()'>get neighbors</md-button>
         <md-input-container>
-          <md-switch ng-model="enhanced">enhanced {{enhanced ? "on - movies, songs, books" : "off - movies only"}}</md-switch>
+          <md-switch ng-model="enhanced">enhanced {{enhanced ? "on - movies, songs, books" : "off - movies only"}}  </md-switch>
         </md-input-container>
         <section layout="row" layout-wrap>
             <textarea ng-model='neighborList'></textarea>
@@ -35,6 +35,44 @@
         <md-input-container>
           <md-switch ng-model="hipster">hipster films</md-switch>
         </md-input-container>
+        <!-- sliders -->
+        <div layout>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">box office</span>
+          </div>
+          <md-slider flex min="0" max="100" ng-model="weights.popularity"  class="md-primary"></md-slider>
+          <div flex="20" layout layout-align="center center">
+            <input flex type="number" ng-model="weights.popularity">
+          </div>
+        </div>
+        <div layout>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">tomatometer</span>
+          </div>
+          <md-slider flex min="0" max="100" ng-model="weights.reviews" class="md-primary"></md-slider>
+          <div flex="20" layout layout-align="center center">
+            <input flex type="number" ng-model="weights.reviews">
+          </div>
+        </div>
+        <div layout>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">neighbors</span>
+          </div>
+          <md-slider flex min="0" max="100" ng-model="weights.trustworthiness"  class="md-primary"></md-slider>
+          <div flex="20" layout layout-align="center center">
+            <input flex type="number" ng-model="weights.trustworthiness">
+          </div>
+        </div>
+        <div layout>
+          <div flex="10" layout layout-align="center center">
+            <span class="md-body-1">film buffs</span>
+          </div>
+          <md-slider flex min="0" max="100" ng-model="weights.filmbuff"  class="md-primary"></md-slider>
+          <div flex="20" layout layout-align="center center">
+            <input flex type="number" ng-model="weights.filmbuff">
+          </div>
+        </div>
+        <!-- end sliders -->
         <section layout="row" layout-wrap>
             <textarea class="textarea-wide" ng-model='recs'></textarea>
         </section>

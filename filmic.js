@@ -3,6 +3,12 @@ var app = angular.module('filmicApp', ['ngMaterial']);
 app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.enhanced = true;
   $scope.hipster = false;
+  $scope.weights = {
+    popularity: 20,
+    reviews: 40,
+    trustworthiness:80,
+    filmbuff: 60
+  }
 
   $scope.people = {};
   $scope.globalLikes = {};
@@ -32,7 +38,7 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   };
 
   $scope.getNeighbors = function() {
-    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, $scope.enhanced, .8);
+    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, $scope.enhanced, .7);
     
     // map from neighbor's id to neighbor's name
     var neighborCopy = angular.copy($scope.neighbors);
@@ -44,7 +50,10 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   };
 
   $scope.getRecs = function() {
-    var result = getRecs($scope.neighbors, $scope.people.friends, $scope.hipster, [1,2,3,4], $scope.globalLikes, $scope.tomatometer);
+    var weights = [$scope.weights.popularity, $scope.weights.reviews, $scope.weights.trustworthiness, $scope.weights.filmbuff]
+
+    var result = getRecs($scope.neighbors, $scope.people.friends, $scope.hipster, weights, $scope.globalLikes, $scope.tomatometer);
+    
     $scope.recs = JSON.stringify(result, null, 4);
   };
 
@@ -170,6 +179,8 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
     return bSum - aSum;
   });
+
+  console.log(recs);
   
   // top 10
   recs = recs.slice(0,10);
