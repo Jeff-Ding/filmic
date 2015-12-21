@@ -3,6 +3,10 @@ textarea {
   height:200px;
 }
 
+.textarea-wide {
+    width:600px;
+}
+
 section {
   background: #f7f7f7;
   border-radius: 3px;

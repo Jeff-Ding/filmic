@@ -7,9 +7,7 @@
 
   <body ng-controller='filmicController' ng-cloak>
     <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h3><span>filmic</span></h3>
-        </div>
+        <div class="md-toolbar-tools"> filmic </div>
     </md-toolbar>
     
     <md-content flex layout-padding>
@@ -26,13 +24,19 @@
         </section>
 
         <md-button class="md-raised" ng-click='getNeighbors()'>get neighbors</md-button>
+        <md-input-container>
+          <md-switch ng-model="enhanced">enhanced {{enhanced ? "on - movies, songs, books" : "off - movies only"}}</md-switch>
+        </md-input-container>
         <section layout="row" layout-wrap>
             <textarea ng-model='neighborList'></textarea>
         </section>
 
         <md-button class="md-raised md-warn" ng-click='getRecs()'>get recommendations</md-button>
+        <md-input-container>
+          <md-switch ng-model="hipster">hipster films</md-switch>
+        </md-input-container>
         <section layout="row" layout-wrap>
-            <textarea ng-model='recs'></textarea>
+            <textarea class="textarea-wide" ng-model='recs'></textarea>
         </section>
     </md-content>
 

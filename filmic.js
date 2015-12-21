@@ -1,6 +1,9 @@
 var app = angular.module('filmicApp', ['ngMaterial']);
 
 app.controller('filmicController', function($scope, $rootScope, $http) {
+  $scope.enhanced = true;
+  $scope.hipster = false;
+
   $scope.people = {};
   $scope.globalLikes = {};
   $scope.tomatometer = {};
@@ -29,7 +32,7 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   };
 
   $scope.getNeighbors = function() {
-    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, true, .8);
+    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, $scope.enhanced, .8);
     
     // map from neighbor's id to neighbor's name
     var neighborCopy = angular.copy($scope.neighbors);
@@ -41,7 +44,7 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   };
 
   $scope.getRecs = function() {
-    var result = getRecs($scope.neighbors, $scope.people.friends, false, [1,2,3,4], $scope.globalLikes, $scope.tomatometer);
+    var result = getRecs($scope.neighbors, $scope.people.friends, $scope.hipster, [1,2,3,4], $scope.globalLikes, $scope.tomatometer);
     $scope.recs = JSON.stringify(result, null, 4);
   };
 
