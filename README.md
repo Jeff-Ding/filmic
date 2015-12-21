@@ -1,2 +1,2 @@
 #filmic
-## film recommendation from facebook friends
+## film recommendation from friends

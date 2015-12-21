@@ -1,19 +1,27 @@
+// Filmic - Films From Friends
+// Sahil Gupta and Jeff Ding
+// CS 458 = Automated Decision Systems
+
+
+/* begin: code for html and view */
+
 var app = angular.module('filmicApp', ['ngMaterial']);
 
 app.controller('filmicController', function($scope, $rootScope, $http) {
-  $scope.enhanced = true;
-  $scope.hipster = false;
-  $scope.weights = {
-    popularity: 20,
-    reviews: 40,
-    trustworthiness:80,
-    filmbuff: 60
+  $scope.enhanced = true; // whether to read movies/books/songs or only movies
+  $scope.hipster = false; // whether to favor less popular movies
+  $scope.weights = {      // default weights for decision factors
+    popularity: 20,         // weight for facebook likes
+    reviews: 40,            // weight for rotten tomatoes score
+    trustworthiness: 80,    // weight for friends with more in common
+    filmbuff: 60            // weight for friends who have seen many films
   }
 
-  $scope.people = {};
-  $scope.globalLikes = {};
-  $scope.tomatometer = {};
+  $scope.people = {};       // json of person and all friends
+  $scope.globalLikes = {};  // json of facebook likes
+  $scope.tomatometer = {};  // json of rotten tomatoes score
 
+  // get data from json files
   $http.get('./people.json').success(function(data) {
     $scope.people = data;
   });
@@ -26,29 +34,36 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
 
  
   $scope.sayHello = function() {
-      // $scope.greeting = 'hello'
       $scope.greeting = 'hello ' + $scope.people.person1.name;
   }
 
 
+  // list favorite movies, songs, and books
   $scope.listInfo = function() {
     $scope.movieList = JSON.stringify($scope.people.person1.movies, null, 4);
     $scope.songList = JSON.stringify($scope.people.person1.songs, null, 4);
     $scope.bookList = JSON.stringify($scope.people.person1.books, null, 4);
   };
 
+  // list neighbors in the 70% percentile of things in common
+  // display their name and N things in common
   $scope.getNeighbors = function() {
-    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, $scope.enhanced, .7);
+    var threshold = .7
+
+    $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, $scope.enhanced, threshold);
     
-    // map from neighbor's id to neighbor's name
+    // map from id to name
     var neighborCopy = angular.copy($scope.neighbors);
     for (var i in neighborCopy) {
       neighborID = neighborCopy[i][0];
       neighborCopy[i][0] = $scope.people.friends[neighborID].name;
     }
+
     $scope.neighborList = JSON.stringify(neighborCopy, null, 4);
   };
 
+
+  // get film recommendations from neighbors
   $scope.getRecs = function() {
     var weights = [$scope.weights.popularity, $scope.weights.reviews, $scope.weights.trustworthiness, $scope.weights.filmbuff]
 
@@ -59,12 +74,11 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
 
 });
 
+/* end: code for html and view */
 
 
 
-
-
-
+/* begin: code for recommendern algorithm */
 
 //  me: object
 //    key: movies, songs, books
@@ -83,11 +97,11 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
 
   for (var i in ids) {
     var friend = friends[ids[i]];
-    var closeness = sharedLikes(me, friend, "movies");
+    var closeness = sharedLikes(me, friend, 'movies');
 
     if (enhanced) {
-      closeness += sharedLikes(me, friend, "songs");
-      closeness += sharedLikes(me, friend, "books");
+      closeness += sharedLikes(me, friend, 'songs');
+      closeness += sharedLikes(me, friend, 'books');
     }
 
     neighbors.push([ids[i], closeness]);
@@ -98,7 +112,7 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
     return a[1] - b[1];
   });
 
-  var cutoff = Math.ceil(length*threshold);
+  var cutoff = Math.ceil(length * threshold);
   return neighbors.slice(cutoff, length);
 };
 
@@ -179,11 +193,12 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
     return bSum - aSum;
   });
-
-  console.log(recs);
-  
+ 
   // top 10
   recs = recs.slice(0,10);
+
+  // show the weighted scores for the top 10 recs
+  console.log(recs);
 
   // only want movie ids
   for (i in recs)
@@ -197,3 +212,5 @@ var removeDuplicates = function(x) {
     return !pos || item != ary[pos - 1];
   });
 };
+
+/* end: code for recommender algorithm */
