@@ -4,6 +4,7 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.people = {};
   $scope.globalLikes = {};
   $scope.tomatometer = {};
+
   $http.get('./people.json').success(function(data) {
     $scope.people = data;
   });
@@ -29,14 +30,20 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
 
   $scope.getNeighbors = function() {
     $scope.neighbors = getNeighbors($scope.people.person1, $scope.people.friends, true, .8);
-    $scope.neighborList = JSON.stringify($scope.neighbors, null, 4);
+    
+    // map from neighbor's id to neighbor's name
+    var neighborCopy = angular.copy($scope.neighbors);
+    for (var i in neighborCopy) {
+      neighborID = neighborCopy[i][0];
+      neighborCopy[i][0] = $scope.people.friends[neighborID].name;
+    }
+    $scope.neighborList = JSON.stringify(neighborCopy, null, 4);
   };
 
   $scope.getRecs = function() {
     var result = getRecs($scope.neighbors, $scope.people.friends, false, [1,2,3,4], $scope.globalLikes, $scope.tomatometer);
     $scope.recs = JSON.stringify(result, null, 4);
   };
-
 
 });
 
@@ -93,9 +100,8 @@ var sharedLikes = function(me, friend, medium) {
 
   for (var i in myTitles) {
     for (var j in friendTitles) {
-      if (myTitles[i] === friendTitles[j]) {
+      if (myTitles[i] === friendTitles[j])
         shared++;
-      }
     }
   }
 
