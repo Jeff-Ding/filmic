@@ -184,10 +184,6 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
   // sort by sum of scores, descending
   recs.sort(function(a, b) {
-    var sum = function(x, y) {
-      return x + y;
-    };
-
     var aSum = a.slice(1,5).reduce(sum);
     var bSum = b.slice(1,5).reduce(sum);
 
@@ -202,12 +198,18 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
   console.log('top 10:');
   console.log(print);
 
-  // only want movie ids
+  // store sum of 4 scores at end of array
   for (i in recs)
-    recs[i] = recs[i][0];
+    recs[i][5] = 'net score = ' + recs[i].slice(1,5).reduce(sum);
 
   return recs;
 };
+
+
+var sum = function(x, y) {
+  return x + y;
+};
+
 
 var removeDuplicates = function(x) {
   return x.sort().filter(function(item, pos, ary) {
