@@ -86,15 +86,16 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
 //  friends: object
 //    key: friend ID
 //    value: "me" object for that friend
-//  enhanced: boolean
+//  enhanced: boolean of whether to looks at songs and books too
 //  threshold: percentile cutoff for closeness
-//    represented as int between 0 and 1
+//    represented as float between 0 and 1
 //  return: array of [friend ID, closeness] pairs that exceed threshold
 var getNeighbors = function(me, friends, enhanced, threshold) {
   var neighbors = [];
   var length = 0;
   var ids = Object.keys(friends);
 
+  // look through all friends
   for (var i in ids) {
     var friend = friends[ids[i]];
     var closeness = sharedLikes(me, friend, 'movies');
@@ -108,8 +109,9 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
     length++;
   }
 
+  // sort descending
   neighbors.sort(function(a, b) {
-    return a[1] - b[1];
+    return b[1] - a[1];
   });
 
   var cutoff = Math.ceil(length * threshold);
@@ -135,15 +137,15 @@ var sharedLikes = function(me, friend, medium) {
 };
 
 
-//  hipster: boolean
+//  hipster: boolean of whether to prefer movies less popular at the box office
 //  weights: length 4 array of weights
-//    indicies:
-//      0: popularity
-//      1: reviews
-//      2: trustworthiness
-//      3: filmBuffFactor
-//  globalLikes: hashtable
-//  tomatometer: hashtable
+//    indices:
+//      0: popularity       // weight for facebook likes
+//      1: reviews          // weight for rotten tomatoes score
+//      2: trustworthiness  // weight for friends with more in common
+//      3: filmBuffFactor   // weight for friends who have sen many films
+//  globalLikes         // json of facebook likes
+//  tomatometer         // json of rotten tomatoes score
 var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomatometer) {
   var recs = [];
 
@@ -153,7 +155,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
   recs = removeDuplicates(recs);
 
-  // get scores
+  // calculate score of each movie
   for (i in recs) {
     var movie = recs[i];
     var popularity = Math.ceil(Math.log(globalLikes[movie]));
@@ -161,6 +163,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
     var trustworthiness = 0;
     var filmBuffFactor = 0;
 
+    // only evaluate neighbors who have liked the movie
     for (var j in neighbors) {
       var neighbor = neighbors[j][0];
       if (friends[neighbor].movies.indexOf(movie) > -1) {
@@ -171,6 +174,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
       }
     }
 
+    // invert the importance of mass popularity
     if (hipster)
       popularity *= -1;
 
@@ -184,16 +188,16 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
   // sort by sum of scores, descending
   recs.sort(function(a, b) {
-    var aSum = a.slice(1,5).reduce(sum);
-    var bSum = b.slice(1,5).reduce(sum);
+    var aSum = a.slice(1, 5).reduce(sum);
+    var bSum = b.slice(1, 5).reduce(sum);
 
     return bSum - aSum;
   });
  
-  // top 10
-  recs = recs.slice(0,10);
+  // save top 10
+  recs = recs.slice(0, 10);
 
-  // console.log(angular.copy(recs));
+  // console.log(angular.copy(recs)); // for debugging
 
   // condense scores in a string
   // store sum of 4 scores at end of array
