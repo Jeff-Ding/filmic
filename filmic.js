@@ -11,10 +11,10 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.enhanced = true; // whether to read movies/books/songs or only movies
   $scope.hipster = false; // whether to favor less popular movies
   $scope.weights = {      // default weights for decision factors
-    popularity: 20,         // weight for facebook likes
+    popularity: 60,         // weight for facebook likes
     reviews: 40,            // weight for rotten tomatoes score
     trustworthiness: 80,    // weight for friends with more in common
-    filmbuff: 60            // weight for friends who have seen many films
+    filmbuff: 20            // weight for friends who have seen many films
   }
 
   $scope.people = {};       // json of person and all friends
@@ -172,7 +172,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
     }
 
     if (hipster)
-      weights[0] *= -1;
+      popularity *= -1;
 
     popularity *= weights[0];
     reviews *= weights[1];
@@ -195,9 +195,13 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
 
   // console.log(angular.copy(recs));
 
+  // condense scores in a string
   // store sum of 4 scores at end of array
-  for (i in recs)
-    recs[i][5] = 'net score = ' + recs[i].slice(1,5).reduce(sum);
+  for (i in recs) {
+    var stringscores = recs[i].slice(1,5).join(', ');
+    var netscore = 'net score = ' + recs[i].slice(1,5).reduce(sum);
+    recs[i] = [recs[i][0], stringscores, netscore]
+  }
 
   return recs;
 };
