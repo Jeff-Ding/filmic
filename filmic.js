@@ -156,7 +156,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
   // get scores
   for (i in recs) {
     var movie = recs[i];
-    var popularity = Math.log(globalLikes[movie]);
+    var popularity = Math.ceil(Math.log(globalLikes[movie]));
     var reviews = tomatometer[movie];
     var trustworthiness = 0;
     var filmBuffFactor = 0;
@@ -193,10 +193,7 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
   // top 10
   recs = recs.slice(0,10);
 
-  // show the weighted scores for the top 10 recs
-  var print = angular.copy(recs);
-  console.log('top 10:');
-  console.log(print);
+  // console.log(angular.copy(recs));
 
   // store sum of 4 scores at end of array
   for (i in recs)
