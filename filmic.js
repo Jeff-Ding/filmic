@@ -67,7 +67,7 @@ app.controller('filmicController', function($scope, $rootScope, $http) {
   $scope.getRecs = function() {
     var weights = [$scope.weights.popularity, $scope.weights.reviews, $scope.weights.trustworthiness, $scope.weights.filmbuff]
 
-    var result = getRecs($scope.neighbors, $scope.people.friends, $scope.hipster, weights, $scope.globalLikes, $scope.tomatometer);
+    var result = getRecs($scope.people.person1, $scope.neighbors, $scope.people.friends, $scope.hipster, weights, $scope.globalLikes, $scope.tomatometer);
     
     $scope.recs = JSON.stringify(result, null, 4);
   };
