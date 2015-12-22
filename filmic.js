@@ -114,8 +114,8 @@ var getNeighbors = function(me, friends, enhanced, threshold) {
     return b[1] - a[1];
   });
 
-  var cutoff = Math.ceil(length * threshold);
-  return neighbors.slice(cutoff, length);
+  var cutoff = length - Math.floor(length * threshold);
+  return neighbors.slice(0, cutoff);
 };
 
 
