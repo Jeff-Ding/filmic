@@ -198,7 +198,9 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
   recs = recs.slice(0,10);
 
   // show the weighted scores for the top 10 recs
-  console.log(recs);
+  var print = angular.copy(recs);
+  console.log('top 10:');
+  console.log(print);
 
   // only want movie ids
   for (i in recs)
