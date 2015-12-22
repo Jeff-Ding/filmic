@@ -146,7 +146,7 @@ var sharedLikes = function(me, friend, medium) {
 //      3: filmBuffFactor   // weight for friends who have sen many films
 //  globalLikes         // json of facebook likes
 //  tomatometer         // json of rotten tomatoes score
-var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomatometer) {
+var getRecs = function(me, neighbors, friends, hipster, weights, globalLikes, tomatometer) {
   var recs = [];
 
   // get all movies liked by neighbors
@@ -154,6 +154,13 @@ var getRecs = function(neighbors, friends, hipster, weights, globalLikes, tomato
     recs = recs.concat(friends[neighbors[i][0]].movies);
 
   recs = removeDuplicates(recs);
+  
+  // only include movies user hasn't already liked
+  recs = recs.filter(function(x) {
+    if (me.movies.indexOf(x) === -1) {
+      return x;
+    }
+  });
 
   // calculate score of each movie
   for (i in recs) {
